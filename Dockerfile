@@ -1,7 +1,7 @@
 FROM docker.1ms.run/arm64v8/openjdk:8-jdk
 MAINTAINER witnessus <witnessus@outlook.com>
 
-ENV GITBLIT_VERSION 1.9.3
+ENV GITBLIT_VERSION 1.9.2
 
 RUN apt-get update \
 	&& apt-get install -y git-core sudo wget \
@@ -35,5 +35,6 @@ VOLUME /opt/gitblit-data
 EXPOSE 8080 8443 9418 29418
 
 WORKDIR /opt/gitblit
+COPY gitblit.jar /opt/gitblit/gitblit.jar
 COPY run.sh /run.sh
 CMD /run.sh
